@@ -12,7 +12,7 @@ import tensorflow as tf
 def visualize(**images):
     """PLot images in one row."""
     n = len(images)
-    plt.figure(figsize=(16, 5))
+    plt.figure(figsize=(16, 8),dpi=100)
     for i, (name, image) in enumerate(images.items()):
         plt.subplot(1, n, i + 1)
         plt.xticks([])
