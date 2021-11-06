@@ -45,7 +45,6 @@ class Dataset:
             (e.g. noralization, shape manipulation, etc.)
     
     """
-    
     CLASSES = ['sky', 'building', 'pole', 'road', 'pavement', 
                'tree', 'signsymbol', 'fence', 'car', 
                'pedestrian', 'bicyclist', 'unlabelled']
@@ -71,8 +70,10 @@ class Dataset:
         
         # read data
         image = cv2.imread(self.images_fps[i])
+        image = cv2.resize(image,(320,320))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         mask = cv2.imread(self.masks_fps[i], 0)
+        mask = cv2.resize(mask,(320,320))
         
         # extract certain classes from mask (e.g. cars)
         masks = [(mask == v) for v in self.class_values]
