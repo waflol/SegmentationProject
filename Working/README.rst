@@ -13,8 +13,7 @@
 
 **Important note**
 
-    Some models of version ``1.*`` are not compatible with previously trained models,
-    if you have such models and want to load them - roll back with:
+    Một số kiểu máy của phiên bản '' 1. * '' không tương thích với các kiểu máy đã được đào tạo trước đó, 17 nếu bạn có các kiểu máy như vậy và muốn tải chúng - hãy quay lại với
 
     $ pip install -U segmentation-models==0.2.1
 
@@ -26,9 +25,6 @@ Table of Contents
  - `Models and Backbones`_
  - `Installation`_
  - `Documentation`_
- - `Change log`_
- - `Citing`_
- - `License`_
  
 Quick start
 ~~~~~~~~~~~
@@ -220,28 +216,3 @@ Documentation
 ~~~~~~~~~~~~~
 Latest **documentation** is avaliable on `Read the
 Docs <https://segmentation-models.readthedocs.io/en/latest/>`__
-
-Change Log
-~~~~~~~~~~
-To see important changes between versions look at CHANGELOG.md_
-
-Citing
-~~~~~~~~
-
-.. code::
-
-    @misc{Yakubovskiy:2019,
-      Author = {Pavel Yakubovskiy},
-      Title = {Segmentation Models},
-      Year = {2019},
-      Publisher = {GitHub},
-      Journal = {GitHub repository},
-      Howpublished = {\url{https://github.com/qubvel/segmentation_models}}
-    } 
-
-License
-~~~~~~~
-Project is distributed under `MIT Licence`_.
-
-.. _CHANGELOG.md: https://github.com/qubvel/segmentation_models/blob/master/CHANGELOG.md
-.. _`MIT Licence`: https://github.com/qubvel/segmentation_models/blob/master/LICENSE
