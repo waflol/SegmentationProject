@@ -6,7 +6,7 @@ from tensorflow import keras
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
-
+import re
 
 # helper function for data visualization
 def visualize(**images):
@@ -45,9 +45,9 @@ class Dataset:
             (e.g. noralization, shape manipulation, etc.)
     
     """
-    CLASSES = ['sky', 'building', 'pole', 'road', 'pavement', 
-               'tree', 'signsymbol', 'fence', 'car', 
-               'pedestrian', 'bicyclist', 'unlabelled']
+    
+    #CLASSES = ['sky', 'building', 'pole', 'road', 'pavement', 'tree', 'signsymbol', 'fence', 'car', 'pedestrian', 'bicyclist', 'unlabelled']
+    
     def __init__(
             self, 
             images_dir, 
@@ -55,11 +55,13 @@ class Dataset:
             classes=None, 
             augmentation=None, 
             preprocessing=None,
+            labels = ['sky', 'building', 'pole', 'road', 'pavement', 'tree', 'signsymbol', 'fence', 'car', 'pedestrian', 'bicyclist', 'unlabelled']
     ):
         self.ids = os.listdir(images_dir)
         self.images_fps = [os.path.join(images_dir, image_id) for image_id in self.ids]
-        self.masks_fps = [os.path.join(masks_dir, image_id) for image_id in self.ids]
-        
+        #self.masks_fps = [os.path.join(masks_dir, image_id) for image_id in self.ids]
+        self.masks_fps = [os.path.join(masks_dir, 'segmentation_'+re.findall(r'\d+', image_id)[0]+'.png') for image_id in self.ids]
+        self.CLASSES = labels
         # convert str names to class values on masks
         self.class_values = [self.CLASSES.index(cls.lower()) for cls in classes]
         
