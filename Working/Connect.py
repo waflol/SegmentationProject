@@ -12,12 +12,10 @@ from io import BytesIO
 # import matplotlib as plt
 # import math
 import time
-from trained_Model.trained_model import *
 from data_processing.Augmentation import *
 from data_processing.helper import *
 from data_processing.trained_model import *
 import tensorflow as tf
-from TrafficSign.TrafficSignModel import *
 import os
 import glob
 import json
@@ -60,7 +58,6 @@ def telemetry(sid, data):
         speed_callback = 0  # Vận tốc hiện tại của xe
         image = 0  # Ảnh gốc
         # Original Image
-        print(data)
         image = Image.open(BytesIO(base64.b64decode(data["image"])))
         image = np.asarray(image)
         cv2.imshow('',image)
