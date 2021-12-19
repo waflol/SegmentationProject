@@ -1,16 +1,6 @@
 .. raw:: html
 
 
-**The main features** of this library are:
-
--  High level API (just two lines of code to create model for segmentation)
--  **4** models architectures for binary and multi-class image segmentation
-   (including legendary **Unet**)
--  **25** available backbones for each architecture
--  All backbones have **pre-trained** weights for faster and better
-   convergence
-- Helpful segmentation losses (Jaccard, Dice, Focal) and metrics (IoU, F-score)
-
 **Important note**
 
     Một số kiểu máy của phiên bản '' 1. * '' không tương thích với các kiểu máy đã được đào tạo trước đó, 17 nếu bạn có các kiểu máy như vậy và muốn tải chúng - hãy quay lại với
@@ -28,21 +18,18 @@ Table of Contents
  
 Quick start
 ~~~~~~~~~~~
-Library is build to work together with Keras and TensorFlow Keras frameworks
+Library được xây dựng để làm việc cùng với Keras và TensorFlow Keras frameworks
 
 .. code:: python
 
     import segmentation_models as sm
     # Segmentation Models: using `keras` framework.
 
-By default it tries to import ``keras``, if it is not installed, it will try to start with ``tensorflow.keras`` framework.
-There are several ways to choose framework:
+Mặc định là import ``keras``, nếu keras không được cài đặt trước đó, nó sẽ thay thế bằng ``tensorflow.keras`` framework.
+rk:Có một vài cách để chọn framework:
 
-- Provide environment variable ``SM_FRAMEWORK=keras`` / ``SM_FRAMEWORK=tf.keras`` before import ``segmentation_models``
-- Change framework ``sm.set_framework('keras')`` /  ``sm.set_framework('tf.keras')``
-
-You can also specify what kind of ``image_data_format`` to use, segmentation-models works with both: ``channels_last`` and ``channels_first``.
-This can be useful for further model conversion to Nvidia TensorRT format or optimizing model for cpu/gpu computations.
+- Cung cấp biến môi trường ``SM_FRAMEWORK=keras`` / ``SM_FRAMEWORK=tf.keras`` trước import ``segmentation_models``
+- Đổi framework ``sm.set_framework('keras')`` /  ``sm.set_framework('tf.keras')``
 
 .. code:: python
 
@@ -51,20 +38,20 @@ This can be useful for further model conversion to Nvidia TensorRT format or opt
 
     keras.backend.set_image_data_format('channels_last')
     # or keras.backend.set_image_data_format('channels_first')
-
-Created segmentation model is just an instance of Keras Model, which can be build as easy as:
+   
+Tạo segmentation model chỉ là một ví dụ của Keras Model
 
 .. code:: python
     
     model = sm.Unet()
-    
-Depending on the task, you can change the network architecture by choosing backbones with fewer or more parameters and use pretrainded weights to initialize it:
 
+Dựa trên nhiệm vụ, ta có thể chuyển đổi kiến trúc mạng bằng cách chọn các backbone với các tham số và pretrained weights đã được khởi tạo kèm theo:
 .. code:: python
 
     model = sm.Unet('resnet34', encoder_weights='imagenet')
 
-Change number of output classes in the model (choose your case):
+
+Thay đổi số output classes trong model:
 
 .. code:: python
     
@@ -82,7 +69,7 @@ Change number of output classes in the model (choose your case):
     model = sm.Unet('resnet34', classes=3, activation='sigmoid')
     
     
-Change input shape of the model:
+Thay đổi input shape của model:
 
 .. code:: python
     
@@ -126,7 +113,7 @@ Simple training pipeline
        validation_data=(x_val, y_val),
     )
 
-Same manipulations can be done with ``Linknet``, ``PSPNet`` and ``FPN``. For more detailed information about models API and  use cases `Read the Docs <https://segmentation-models.readthedocs.io/en/latest/>`__.
+Các thao tác tương tự có thể được thực hiện với ``Linknet``, ``PSPNet`` and ``FPN``. Để biết thêm thông tin chi tiết về API mô hình và các trường hợp sử dụng `Read the Docs <https://segmentation-models.readthedocs.io/en/latest/>`__.
 
 
 Models and Backbones
